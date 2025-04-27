@@ -30,7 +30,6 @@ function LandingPage() {
       backgroundColor: '#000', 
       minHeight: '100vh',
       color: 'white',
-      backgroundImage: 'url("https://i.imgur.com/ePQtcfT.jpg")',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
@@ -45,12 +44,12 @@ function LandingPage() {
         background: 'rgba(0,0,0,0.7)'
       }}>
         <div style={{ 
-          color: '#ff0066', 
+          color: '#1e90ff', 
           fontWeight: 'bold', 
           fontSize: '2rem',
           fontFamily: 'impact, sans-serif'
         }}>
-          LUZ
+          FishGG
         </div>
         <nav style={{ display: 'flex', gap: '1.5rem' }}>
           <a href="#" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }}>HOME</a>
@@ -104,7 +103,7 @@ function LandingPage() {
         <button
           onClick={handleLogin}
           style={{
-            backgroundColor: '#ff0066',
+            backgroundColor: '#1e90ff',
             color: 'white',
             border: 'none',
             padding: '1rem 2rem',
@@ -112,16 +111,16 @@ function LandingPage() {
             fontWeight: 'bold',
             fontSize: '1.2rem',
             cursor: 'pointer',
-            boxShadow: '0 0 15px rgba(255,0,102,0.5)',
+            boxShadow: '0 0 15px rgba(30,144,255,0.5)',
             transition: 'transform 0.2s, box-shadow 0.2s'
           }}
           onMouseOver={(e) => {
             e.currentTarget.style.transform = 'scale(1.05)';
-            e.currentTarget.style.boxShadow = '0 0 20px rgba(255,0,102,0.7)';
+            e.currentTarget.style.boxShadow = '0 0 20px rgba(30,144,255,0.7)';
           }}
           onMouseOut={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.boxShadow = '0 0 15px rgba(255,0,102,0.5)';
+            e.currentTarget.style.boxShadow = '0 0 15px rgba(30,144,255,0.5)';
           }}
         >
           CONECTE AGORA
@@ -161,7 +160,7 @@ function Dashboard() {
             borderRadius: '50%',
             overflow: 'hidden',
             margin: '0 auto 15px',
-            border: '3px solid #ff0066'
+            border: '3px solid #1e90ff'
           }}>
             <img 
               src="https://i.imgur.com/tdi3NGa.jpg" 
@@ -171,7 +170,7 @@ function Dashboard() {
           </div>
           
           <h2 style={{ 
-            color: '#ff0066',
+            color: '#1e90ff',
             fontSize: '28px',
             margin: '0 0 5px 0',
             fontWeight: 'bold'
@@ -210,7 +209,7 @@ function Dashboard() {
           <button
             onClick={handleAllowlist}
             style={{
-              backgroundColor: '#ff0066',
+              backgroundColor: '#1e90ff',
               color: 'white',
               border: 'none',
               padding: '10px 0',
@@ -247,7 +246,7 @@ function Dashboard() {
           <button
             onClick={handleBuyVIP}
             style={{
-              backgroundColor: '#ff0066',
+              backgroundColor: '#1e90ff',
               color: 'white',
               border: 'none',
               padding: '10px 0',
@@ -330,7 +329,7 @@ function Dashboard() {
           }}></div>
           
           <h2 style={{
-            color: '#ff0066',
+            color: '#1e90ff',
             fontSize: '32px',
             margin: '0 0 20px 0',
             fontWeight: 'bold'
@@ -341,7 +340,7 @@ function Dashboard() {
           <button
             onClick={handleAllowlist}
             style={{
-              backgroundColor: '#ff0066',
+              backgroundColor: '#1e90ff',
               color: 'white',
               border: 'none',
               padding: '12px 25px',
