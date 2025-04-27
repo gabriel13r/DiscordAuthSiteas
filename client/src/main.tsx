@@ -8,33 +8,37 @@ function LandingPage() {
   
   // Função para navegar entre abas
   const navigateTo = (sectionId: string) => {
-    // Simula uma mudança de URL que atualizará a visualização
-    window.location.hash = sectionId;
+    // Adiciona uma classe para fazer scroll para o topo
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     
-    // Atualiza visualmente a página
-    setTimeout(() => {
-      const sections = ['home', 'como-jogar', 'noticias', 'pacotes', 'vips', 'regras'];
-      
-      // Oculta todas as seções
-      sections.forEach(id => {
-        const section = document.getElementById(id);
-        if (section) {
-          section.style.display = 'none';
-        }
-      });
-      
-      // Mostra apenas a seção desejada
-      const targetSection = document.getElementById(sectionId);
-      if (targetSection) {
-        targetSection.style.display = 'block';
-      } else if (sectionId === 'home' || sectionId === '') {
-        // Se for a página inicial ou hash vazio, mostra a home
-        const homeSection = document.getElementById('home');
-        if (homeSection) {
-          homeSection.style.display = 'block';
-        }
+    // Oculta todas as seções (incluindo as com a classe content-section)
+    document.querySelectorAll('.content-section').forEach(section => {
+      (section as HTMLElement).style.display = 'none';
+    });
+    
+    // Oculta também pelas IDs para garantir
+    ['home', 'como-jogar', 'noticias', 'pacotes', 'vips', 'regras'].forEach(id => {
+      const section = document.getElementById(id);
+      if (section) {
+        section.style.display = 'none';
       }
-    }, 50);
+    });
+    
+    // Mostra apenas a seção desejada
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+      targetSection.style.display = 'block';
+    } else if (sectionId === 'home' || sectionId === '') {
+      // Se for a página inicial ou hash vazio, mostra a home
+      const homeSection = document.getElementById('home');
+      if (homeSection) {
+        homeSection.style.display = 'block';
+      }
+    }
+    
+    // Atualiza o hash da URL (apenas para manter o histórico)
+    window.location.hash = sectionId;
   };
   
   const handleLogin = () => {
@@ -387,7 +391,7 @@ function LandingPage() {
       </div>
 
       {/* Regras */}
-      <div id="regras" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#regras' ? 'block' : 'none' }}>
+      <div id="regras" className="content-section" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#regras' ? 'block' : 'none' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#1e90ff', textAlign: 'center' }}>Regras do Servidor</h2>
           
@@ -658,6 +662,28 @@ function Dashboard() {
   );
 }
 
+// Função para inicializar as abas quando a página carregar
+function initializeNavigation() {
+  const hash = window.location.hash.substring(1) || 'home';
+  
+  // Oculta todas as seções
+  document.querySelectorAll('.content-section').forEach(section => {
+    (section as HTMLElement).style.display = 'none';
+  });
+  
+  // Mostra a seção correta baseada no hash da URL
+  const activeSection = document.getElementById(hash);
+  if (activeSection) {
+    activeSection.style.display = 'block';
+  } else {
+    // Se o hash não corresponder a nenhuma seção, mostra a home
+    const homeSection = document.getElementById('home');
+    if (homeSection) {
+      homeSection.style.display = 'block';
+    }
+  }
+}
+
 // Verifica se o usuário já está autenticado
 fetch('/api/auth/user')
   .then(response => response.json())
@@ -666,9 +692,15 @@ fetch('/api/auth/user')
     createRoot(document.getElementById("root")!).render(
       data.authenticated ? <Dashboard /> : <LandingPage />
     );
+    
+    // Após renderizar, inicializa a navegação
+    setTimeout(initializeNavigation, 100);
   })
   .catch(error => {
     console.error('Erro ao verificar autenticação:', error);
     // Se houver erro, mostra a landing page por padrão
     createRoot(document.getElementById("root")!).render(<LandingPage />);
+    
+    // Após renderizar, inicializa a navegação
+    setTimeout(initializeNavigation, 100);
   });
