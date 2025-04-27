@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 235 86% 65%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  --chart-1: 235 86% 65%;
+  --chart-2: 120 100% 70%;
+  --chart-3: 40 100% 65%;
+  --chart-4: 0 100% 65%;
+  --chart-5: 270 100% 70%;
+  
+  /* Discord colors */
+  --discord-blurple: 235 86% 65%;
+  --discord-blurple-dark: 235 68% 52%;
+  --discord-green: 139 47% 44%;
+  --discord-yellow: 38 96% 54%;
+  --discord-red: 359 67% 61%;
+  --discord-purple: 265 40% 45%;
+  
+  --discord-background: 220 8% 23%;
+  --discord-background-secondary: 222 7% 20%;
+  --discord-background-tertiary: 225 6% 13%;
+  --discord-text: 0 0% 100%;
+  --discord-text-muted: 210 3% 74%;
+}
+
+.dark {
+  --background: 222 7% 20%;
+  --foreground: 0 0% 98%;
+  --muted: 225 6% 13%;
+  --muted-foreground: 210 3% 74%;
+  --popover: 222 7% 20%;
+  --popover-foreground: 0 0% 98%;
+  --card: 222 7% 20%;
+  --card-foreground: 0 0% 98%;
+  --border: 225 6% 13%;
+  --input: 225 6% 13%;
+  --primary: 235 86% 65%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 225 6% 13%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 225 6% 13%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased text-foreground dark;
+    background-color: hsl(var(--discord-background));
+    color: hsl(var(--discord-text));
+  }
+  
+  /* Discord animations */
+  .discord-animation {
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  /* Status indicators */
+  .status-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid hsl(var(--discord-background));
+  }
+}
