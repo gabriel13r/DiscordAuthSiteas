@@ -91,8 +91,72 @@ function LandingPage() {
           <a href="#como-jogar" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); navigateTo('como-jogar'); }}>COMO JOGAR</a>
           <a href="#noticias" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); navigateTo('noticias'); }}>NOTÍCIAS E EVENTOS</a>
           <a href="#pacotes" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); navigateTo('pacotes'); }}>PACOTES</a>
-          <a href="#vips" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); navigateTo('vips'); }}>NOSSOS VIPS</a>
-          <a href="#regras" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); navigateTo('regras'); }}>REGRAS</a>
+          <a 
+            href="#home" 
+            style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} 
+            onClick={(e) => { 
+              e.preventDefault(); 
+              const element = document.getElementById('home');
+              element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+          >
+            HOME
+          </a>
+          <a 
+            href="#como-jogar" 
+            style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} 
+            onClick={(e) => { 
+              e.preventDefault(); 
+              const element = document.getElementById('como-jogar');
+              element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+          >
+            COMO JOGAR
+          </a>
+          <a 
+            href="#noticias" 
+            style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} 
+            onClick={(e) => { 
+              e.preventDefault(); 
+              const element = document.getElementById('noticias');
+              element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+          >
+            NOTÍCIAS E EVENTOS
+          </a>
+          <a 
+            href="#pacotes" 
+            style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} 
+            onClick={(e) => { 
+              e.preventDefault(); 
+              const element = document.getElementById('pacotes');
+              element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+          >
+            PACOTES
+          </a>
+          <a 
+            href="#vips" 
+            style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} 
+            onClick={(e) => { 
+              e.preventDefault(); 
+              const element = document.getElementById('vips');
+              element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+          >
+            NOSSOS VIPS
+          </a>
+          <a 
+            href="#regras" 
+            style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} 
+            onClick={(e) => { 
+              e.preventDefault(); 
+              const element = document.getElementById('regras');
+              element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+          >
+            REGRAS
+          </a>
         </nav>
         <button 
           onClick={handleLogin}
