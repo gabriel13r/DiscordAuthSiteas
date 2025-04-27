@@ -6,6 +6,37 @@ import { useState } from "react";
 function LandingPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
+  // Função para navegar entre abas
+  const navigateTo = (sectionId: string) => {
+    // Simula uma mudança de URL que atualizará a visualização
+    window.location.hash = sectionId;
+    
+    // Atualiza visualmente a página
+    setTimeout(() => {
+      const sections = ['home', 'como-jogar', 'noticias', 'pacotes', 'vips', 'regras'];
+      
+      // Oculta todas as seções
+      sections.forEach(id => {
+        const section = document.getElementById(id);
+        if (section) {
+          section.style.display = 'none';
+        }
+      });
+      
+      // Mostra apenas a seção desejada
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.style.display = 'block';
+      } else if (sectionId === 'home' || sectionId === '') {
+        // Se for a página inicial ou hash vazio, mostra a home
+        const homeSection = document.getElementById('home');
+        if (homeSection) {
+          homeSection.style.display = 'block';
+        }
+      }
+    }, 50);
+  };
+  
   const handleLogin = () => {
     fetch("/api/auth/login")
       .then(response => response.json())
@@ -52,12 +83,12 @@ function LandingPage() {
           FishGG
         </div>
         <nav style={{ display: 'flex', gap: '1.5rem' }}>
-          <a href="#home" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); window.location.hash = 'home'; }}>HOME</a>
-          <a href="#como-jogar" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); window.location.hash = 'como-jogar'; }}>COMO JOGAR</a>
-          <a href="#noticias" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); window.location.hash = 'noticias'; }}>NOTÍCIAS E EVENTOS</a>
-          <a href="#pacotes" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); window.location.hash = 'pacotes'; }}>PACOTES</a>
-          <a href="#vips" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); window.location.hash = 'vips'; }}>NOSSOS VIPS</a>
-          <a href="#regras" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); window.location.hash = 'regras'; }}>REGRAS</a>
+          <a href="#home" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); navigateTo('home'); }}>HOME</a>
+          <a href="#como-jogar" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); navigateTo('como-jogar'); }}>COMO JOGAR</a>
+          <a href="#noticias" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); navigateTo('noticias'); }}>NOTÍCIAS E EVENTOS</a>
+          <a href="#pacotes" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); navigateTo('pacotes'); }}>PACOTES</a>
+          <a href="#vips" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); navigateTo('vips'); }}>NOSSOS VIPS</a>
+          <a href="#regras" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); navigateTo('regras'); }}>REGRAS</a>
         </nav>
         <button 
           onClick={handleLogin}
@@ -128,7 +159,7 @@ function LandingPage() {
       </div>
 
       {/* Seções de conteúdo */}
-      <div id="home" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#home' || window.location.hash === '' ? 'block' : 'none' }}>
+      <div id="home" className="content-section" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#home' || window.location.hash === '' ? 'block' : 'none' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#1e90ff' }}>Bem-vindo ao FishGG</h2>
           <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '2rem', color: '#ddd' }}>
@@ -154,7 +185,7 @@ function LandingPage() {
       </div>
 
       {/* Como Jogar */}
-      <div id="como-jogar" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#como-jogar' ? 'block' : 'none' }}>
+      <div id="como-jogar" className="content-section" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#como-jogar' ? 'block' : 'none' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#1e90ff', textAlign: 'center' }}>Como Jogar</h2>
           
@@ -190,7 +221,7 @@ function LandingPage() {
       </div>
 
       {/* Notícias e Eventos */}
-      <div id="noticias" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#noticias' ? 'block' : 'none' }}>
+      <div id="noticias" className="content-section" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#noticias' ? 'block' : 'none' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#1e90ff', textAlign: 'center' }}>Notícias e Eventos</h2>
           
@@ -226,7 +257,7 @@ function LandingPage() {
       </div>
 
       {/* Pacotes */}
-      <div id="pacotes" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#pacotes' ? 'block' : 'none' }}>
+      <div id="pacotes" className="content-section" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#pacotes' ? 'block' : 'none' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#1e90ff', textAlign: 'center' }}>Pacotes</h2>
           
@@ -283,7 +314,7 @@ function LandingPage() {
       </div>
 
       {/* Nossos VIPs */}
-      <div id="vips" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#vips' ? 'block' : 'none' }}>
+      <div id="vips" className="content-section" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#vips' ? 'block' : 'none' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#1e90ff', textAlign: 'center' }}>Nossos VIPs</h2>
           
