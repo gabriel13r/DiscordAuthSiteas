@@ -52,12 +52,12 @@ function LandingPage() {
           FishGG
         </div>
         <nav style={{ display: 'flex', gap: '1.5rem' }}>
-          <a href="#" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }}>HOME</a>
-          <a href="#" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }}>COMO JOGAR</a>
-          <a href="#" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }}>NOTÍCIAS E EVENTOS</a>
-          <a href="#" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }}>PACOTES</a>
-          <a href="#" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }}>NOSSOS VIPS</a>
-          <a href="#" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }}>REGRAS</a>
+          <a href="#home" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); window.location.hash = 'home'; }}>HOME</a>
+          <a href="#como-jogar" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); window.location.hash = 'como-jogar'; }}>COMO JOGAR</a>
+          <a href="#noticias" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); window.location.hash = 'noticias'; }}>NOTÍCIAS E EVENTOS</a>
+          <a href="#pacotes" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); window.location.hash = 'pacotes'; }}>PACOTES</a>
+          <a href="#vips" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); window.location.hash = 'vips'; }}>NOSSOS VIPS</a>
+          <a href="#regras" style={{ color: 'white', textDecoration: 'none', fontSize: '0.9rem' }} onClick={(e) => { e.preventDefault(); window.location.hash = 'regras'; }}>REGRAS</a>
         </nav>
         <button 
           onClick={handleLogin}
@@ -125,6 +125,275 @@ function LandingPage() {
         >
           CONECTE AGORA
         </button>
+      </div>
+
+      {/* Seções de conteúdo */}
+      <div id="home" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#home' || window.location.hash === '' ? 'block' : 'none' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#1e90ff' }}>Bem-vindo ao FishGG</h2>
+          <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '2rem', color: '#ddd' }}>
+            O melhor servidor de roleplay do Brasil! Venha viver experiências incríveis e únicas em nosso servidor.
+            Aqui você encontra uma comunidade ativa, economia balanceada e muito divertimento.
+          </p>
+          <button
+            onClick={handleLogin}
+            style={{
+              backgroundColor: '#1e90ff',
+              color: 'white',
+              border: 'none',
+              padding: '1rem 2rem',
+              borderRadius: '4px',
+              fontWeight: 'bold',
+              fontSize: '1.2rem',
+              cursor: 'pointer'
+            }}
+          >
+            COMEÇAR AGORA
+          </button>
+        </div>
+      </div>
+
+      {/* Como Jogar */}
+      <div id="como-jogar" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#como-jogar' ? 'block' : 'none' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#1e90ff', textAlign: 'center' }}>Como Jogar</h2>
+          
+          <div style={{ background: 'rgba(30, 30, 30, 0.7)', padding: '2rem', borderRadius: '8px', marginBottom: '2rem' }}>
+            <h3 style={{ color: '#1e90ff', marginBottom: '1rem', fontSize: '1.5rem' }}>Requisitos para jogar:</h3>
+            <ul style={{ color: '#ddd', fontSize: '1.1rem', lineHeight: '1.6', listStyleType: 'none', padding: 0 }}>
+              <li style={{ marginBottom: '0.8rem', display: 'flex', alignItems: 'center' }}>
+                <span style={{ color: '#1e90ff', marginRight: '10px', fontWeight: 'bold' }}>✓</span> 
+                Ter o GTA 5 Original instalado no seu computador
+              </li>
+              <li style={{ marginBottom: '0.8rem', display: 'flex', alignItems: 'center' }}>
+                <span style={{ color: '#1e90ff', marginRight: '10px', fontWeight: 'bold' }}>✓</span> 
+                Instalar o FiveM - plataforma para jogar servidores de RP
+              </li>
+              <li style={{ marginBottom: '0.8rem', display: 'flex', alignItems: 'center' }}>
+                <span style={{ color: '#1e90ff', marginRight: '10px', fontWeight: 'bold' }}>✓</span> 
+                Uma conta Discord para se conectar ao servidor
+              </li>
+            </ul>
+          </div>
+
+          <div style={{ background: 'rgba(30, 30, 30, 0.7)', padding: '2rem', borderRadius: '8px' }}>
+            <h3 style={{ color: '#1e90ff', marginBottom: '1rem', fontSize: '1.5rem' }}>Passos para conectar:</h3>
+            <ol style={{ color: '#ddd', fontSize: '1.1rem', lineHeight: '1.6', paddingLeft: '20px' }}>
+              <li style={{ marginBottom: '1rem' }}>Abra o FiveM e aguarde o carregamento completo.</li>
+              <li style={{ marginBottom: '1rem' }}>Clique em "Play" e depois em "Direct Connect".</li>
+              <li style={{ marginBottom: '1rem' }}>Digite o endereço: <span style={{ background: '#1a1a1a', padding: '3px 8px', borderRadius: '4px' }}>cfx.re/join/fishgg</span></li>
+              <li style={{ marginBottom: '1rem' }}>Faça login com sua conta Discord quando solicitado.</li>
+              <li>Aproveite o jogo e siga as regras do servidor!</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      {/* Notícias e Eventos */}
+      <div id="noticias" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#noticias' ? 'block' : 'none' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#1e90ff', textAlign: 'center' }}>Notícias e Eventos</h2>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
+            <div style={{ background: 'rgba(30, 30, 30, 0.7)', padding: '1.5rem', borderRadius: '8px', borderLeft: '4px solid #1e90ff' }}>
+              <h3 style={{ color: 'white', marginBottom: '0.5rem' }}>Atualização v3.0.2 - Novos Veículos e Sistemas</h3>
+              <p style={{ color: '#aaa', fontSize: '0.9rem', marginBottom: '1rem' }}>27/04/2025</p>
+              <p style={{ color: '#ddd', fontSize: '1rem', lineHeight: '1.5' }}>
+                Acabamos de lançar a atualização v3.0.2 com novos veículos exclusivos, melhorias no sistema de economia
+                e correções importantes de bugs. Além disso, o sistema de empregos foi totalmente reformulado!
+              </p>
+            </div>
+            
+            <div style={{ background: 'rgba(30, 30, 30, 0.7)', padding: '1.5rem', borderRadius: '8px', borderLeft: '4px solid #1e90ff' }}>
+              <h3 style={{ color: 'white', marginBottom: '0.5rem' }}>Evento de Páscoa - Prêmios Especiais</h3>
+              <p style={{ color: '#aaa', fontSize: '0.9rem', marginBottom: '1rem' }}>18/04/2025</p>
+              <p style={{ color: '#ddd', fontSize: '1rem', lineHeight: '1.5' }}>
+                O evento de Páscoa está acontecendo! Participe da caça aos ovos pela cidade e ganhe recompensas exclusivas.
+                O evento vai até o dia 30/04. Não perca essa chance!
+              </p>
+            </div>
+            
+            <div style={{ background: 'rgba(30, 30, 30, 0.7)', padding: '1.5rem', borderRadius: '8px', borderLeft: '4px solid #1e90ff' }}>
+              <h3 style={{ color: 'white', marginBottom: '0.5rem' }}>Expansão do Mapa - Nova Área Rural</h3>
+              <p style={{ color: '#aaa', fontSize: '0.9rem', marginBottom: '1rem' }}>10/04/2025</p>
+              <p style={{ color: '#ddd', fontSize: '1rem', lineHeight: '1.5' }}>
+                Uma nova área rural foi adicionada ao mapa! Explore fazendas, novas atividades de pesca e caça,
+                além de missões exclusivas para essa região. Perfeito para quem gosta de uma vida mais tranquila.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Pacotes */}
+      <div id="pacotes" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#pacotes' ? 'block' : 'none' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#1e90ff', textAlign: 'center' }}>Pacotes</h2>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
+            <div style={{ background: 'rgba(30, 30, 30, 0.7)', padding: '1.5rem', borderRadius: '8px', textAlign: 'center' }}>
+              <h3 style={{ color: 'white', marginBottom: '0.5rem' }}>Pacote Iniciante</h3>
+              <p style={{ color: '#1e90ff', fontWeight: 'bold', fontSize: '1.5rem', marginBottom: '1rem' }}>R$ 19,90</p>
+              <ul style={{ color: '#ddd', fontSize: '0.9rem', textAlign: 'left', padding: '0 1rem', marginBottom: '1.5rem', listStyleType: 'none' }}>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  R$ 50.000 dinheiro inicial
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  Carro básico
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  Apartamento básico
+                </li>
+              </ul>
+              <button style={{ backgroundColor: '#1e90ff', color: 'white', border: 'none', padding: '10px 0', width: '100%', borderRadius: '4px', fontWeight: 'bold', cursor: 'pointer' }}>
+                COMPRAR
+              </button>
+            </div>
+            
+            <div style={{ background: 'rgba(30, 30, 30, 0.7)', padding: '1.5rem', borderRadius: '8px', textAlign: 'center' }}>
+              <h3 style={{ color: 'white', marginBottom: '0.5rem' }}>Pacote Avançado</h3>
+              <p style={{ color: '#1e90ff', fontWeight: 'bold', fontSize: '1.5rem', marginBottom: '1rem' }}>R$ 49,90</p>
+              <ul style={{ color: '#ddd', fontSize: '0.9rem', textAlign: 'left', padding: '0 1rem', marginBottom: '1.5rem', listStyleType: 'none' }}>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  R$ 200.000 dinheiro inicial
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  Carro esportivo
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  Casa de médio padrão
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  Itens personalizados
+                </li>
+              </ul>
+              <button style={{ backgroundColor: '#1e90ff', color: 'white', border: 'none', padding: '10px 0', width: '100%', borderRadius: '4px', fontWeight: 'bold', cursor: 'pointer' }}>
+                COMPRAR
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Nossos VIPs */}
+      <div id="vips" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#vips' ? 'block' : 'none' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#1e90ff', textAlign: 'center' }}>Nossos VIPs</h2>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
+            <div style={{ background: 'rgba(30, 30, 30, 0.7)', padding: '1.5rem', borderRadius: '8px', textAlign: 'center', border: '1px solid #1e90ff' }}>
+              <div style={{ background: '#1e90ff', padding: '8px 0', margin: '-1.5rem -1.5rem 1rem', borderRadius: '8px 8px 0 0' }}>
+                <h3 style={{ color: 'white', margin: 0 }}>VIP BÁSICO</h3>
+              </div>
+              <p style={{ color: '#1e90ff', fontWeight: 'bold', fontSize: '1.5rem', marginBottom: '1rem' }}>R$ 29,90 <span style={{ fontSize: '0.9rem', color: '#aaa' }}>/mês</span></p>
+              <ul style={{ color: '#ddd', fontSize: '0.9rem', textAlign: 'left', padding: '0 1rem', marginBottom: '1.5rem', listStyleType: 'none' }}>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  Prioridade na fila
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  10% mais dinheiro em trabalhos
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  Tag VIP no chat
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  1 veículo exclusivo
+                </li>
+              </ul>
+              <button style={{ backgroundColor: '#1e90ff', color: 'white', border: 'none', padding: '10px 0', width: '100%', borderRadius: '4px', fontWeight: 'bold', cursor: 'pointer' }}>
+                COMPRAR VIP
+              </button>
+            </div>
+            
+            <div style={{ background: 'rgba(30, 30, 30, 0.7)', padding: '1.5rem', borderRadius: '8px', textAlign: 'center', border: '1px solid #1e90ff' }}>
+              <div style={{ background: '#1e90ff', padding: '8px 0', margin: '-1.5rem -1.5rem 1rem', borderRadius: '8px 8px 0 0' }}>
+                <h3 style={{ color: 'white', margin: 0 }}>VIP PREMIUM</h3>
+              </div>
+              <p style={{ color: '#1e90ff', fontWeight: 'bold', fontSize: '1.5rem', marginBottom: '1rem' }}>R$ 79,90 <span style={{ fontSize: '0.9rem', color: '#aaa' }}>/mês</span></p>
+              <ul style={{ color: '#ddd', fontSize: '0.9rem', textAlign: 'left', padding: '0 1rem', marginBottom: '1.5rem', listStyleType: 'none' }}>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  Prioridade máxima na fila
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  30% mais dinheiro em trabalhos
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  Tag VIP Premium no chat
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  3 veículos exclusivos
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  Casa exclusiva
+                </li>
+                <li style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: '#1e90ff', marginRight: '10px' }}>✓</span> 
+                  Roupas exclusivas
+                </li>
+              </ul>
+              <button style={{ backgroundColor: '#1e90ff', color: 'white', border: 'none', padding: '10px 0', width: '100%', borderRadius: '4px', fontWeight: 'bold', cursor: 'pointer' }}>
+                COMPRAR VIP
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Regras */}
+      <div id="regras" style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '60px 20px', display: window.location.hash === '#regras' ? 'block' : 'none' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#1e90ff', textAlign: 'center' }}>Regras do Servidor</h2>
+          
+          <div style={{ background: 'rgba(30, 30, 30, 0.7)', padding: '2rem', borderRadius: '8px' }}>
+            <h3 style={{ color: '#1e90ff', marginBottom: '1rem' }}>Regras Gerais</h3>
+            <ol style={{ color: '#ddd', fontSize: '1rem', lineHeight: '1.6' }}>
+              <li style={{ marginBottom: '1rem' }}>
+                <strong>Respeito:</strong> Trate todos os jogadores com respeito. Ofensas, discriminações e assédio de qualquer tipo não serão tolerados.
+              </li>
+              <li style={{ marginBottom: '1rem' }}>
+                <strong>Roleplay:</strong> Mantenha o roleplay realista. Não use informações fora do jogo (metagaming) ou quebre o personagem (powergaming).
+              </li>
+              <li style={{ marginBottom: '1rem' }}>
+                <strong>Combate:</strong> Não realize RDM (Random Death Match) ou VDM (Vehicle Death Match). Todo combate deve ter uma motivação de roleplay.
+              </li>
+              <li style={{ marginBottom: '1rem' }}>
+                <strong>Comunicação:</strong> Use o chat de voz para comunicação dentro do jogo. Mantenha conversas fora do personagem no Discord.
+              </li>
+              <li style={{ marginBottom: '1rem' }}>
+                <strong>Cheats:</strong> Uso de qualquer tipo de hack, mod ou cheat resultará em banimento permanente.
+              </li>
+              <li style={{ marginBottom: '1rem' }}>
+                <strong>Bugs:</strong> Não explore bugs do jogo. Reporte-os imediatamente à administração.
+              </li>
+              <li style={{ marginBottom: '1rem' }}>
+                <strong>Administração:</strong> Respeite as decisões da administração. Em caso de discordância, abra um ticket no Discord.
+              </li>
+              <li>
+                <strong>Discord:</strong> É obrigatório estar no Discord do servidor enquanto joga para receber atualizações e contatar a administração.
+              </li>
+            </ol>
+            
+            <p style={{ color: '#aaa', marginTop: '2rem', fontSize: '0.9rem', fontStyle: 'italic' }}>
+              As regras podem ser atualizadas a qualquer momento. É responsabilidade dos jogadores se manterem informados sobre as regras atuais.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
