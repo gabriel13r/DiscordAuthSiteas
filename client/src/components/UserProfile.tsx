@@ -1,7 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { formatDistanceToNow } from "date-fns";
-import { Mail, Calendar } from "lucide-react";
+import { Mail, Calendar, ExternalLink, Shield } from "lucide-react";
 import { Session } from "@shared/schema";
+import { Button } from "@/components/ui/button";
 
 interface UserProfileProps {
   user: Session;
@@ -18,29 +19,45 @@ export default function UserProfile({ user }: UserProfileProps) {
     : user.username;
     
   const createdAt = new Date(user.createdAt);
-  const formattedJoinDate = `Joined Discord ${formatDistanceToNow(createdAt, { addSuffix: true })}`;
+  const formattedJoinDate = `Entrou ${formatDistanceToNow(createdAt, { addSuffix: true })}`;
   
   return (
-    <Card className="bg-[hsl(var(--discord-background-secondary))] border-none shadow-md mb-6">
+    <Card className="bg-[hsl(var(--discord-background-secondary))] border-none shadow-md mb-6 overflow-hidden rounded-xl">
+      <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-2"></div>
+      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 py-6 px-4 flex justify-center">
+        <div className="relative">
+          <img 
+            src={avatarUrl} 
+            alt="User Avatar" 
+            className="w-28 h-28 rounded-full border-4 border-[hsl(var(--discord-background))]"
+          />
+          <span className="status-dot bg-[hsl(var(--discord-green))]"></span>
+        </div>
+      </div>
+      
       <CardContent className="p-6">
         <div className="flex flex-col items-center">
-          <div className="relative mb-4">
-            <img 
-              src={avatarUrl} 
-              alt="User Avatar" 
-              className="w-24 h-24 rounded-full border-4 border-[hsl(var(--discord-background))]"
-            />
-            <span className="status-dot bg-[hsl(var(--discord-green))]"></span>
+          <h2 className="text-xl font-bold mb-1 mt-2">{username}</h2>
+          <div className="bg-[hsl(var(--discord-blurple))] text-white text-xs px-2 py-1 rounded-full mb-3 flex items-center">
+            <Shield className="h-3 w-3 mr-1" />
+            Usuário Discord
           </div>
           
-          <h2 className="text-xl font-bold mb-1">{username}</h2>
           <p className="text-sm text-[hsl(var(--discord-text-muted))] mb-4">
             ID: {user.discordId}
           </p>
           
-          <div className="w-full border-t border-gray-700 my-4"></div>
+          <Button 
+            className="w-full bg-[hsl(var(--discord-blurple))] hover:bg-[hsl(var(--discord-blurple-dark))] mb-4 text-sm h-9"
+            onClick={() => window.open(`https://discord.com/users/${user.discordId}`, '_blank')}
+          >
+            <ExternalLink className="h-4 w-4 mr-2" /> 
+            Ver perfil no Discord
+          </Button>
           
-          <div className="flex items-center mb-2 w-full">
+          <div className="w-full border-t border-gray-700 my-2"></div>
+          
+          <div className="flex items-center mb-2 w-full mt-3">
             <Calendar className="h-4 w-4 mr-2 text-[hsl(var(--discord-text-muted))]" />
             <span className="text-sm">{formattedJoinDate}</span>
           </div>

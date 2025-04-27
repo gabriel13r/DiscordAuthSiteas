@@ -12,15 +12,7 @@ const MemoryStoreInstance = MemoryStore(session);
 // Discord OAuth2 config
 const DISCORD_CLIENT_ID = process.env.DISCORD_CLIENT_ID || "";
 const DISCORD_CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET || "";
-let REDIRECT_URI = "http://localhost:5000/api/auth/callback";
-
-// Use REPLIT_DOMAINS environment variable for callback URL if available
-if (process.env.REPLIT_DOMAINS) {
-  const domains = process.env.REPLIT_DOMAINS.split(",");
-  if (domains.length > 0) {
-    REDIRECT_URI = `https://${domains[0]}/api/auth/callback`;
-  }
-}
+const REDIRECT_URI = process.env.DISCORD_REDIRECT_URI || "http://localhost:5000/api/auth/callback";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Set up session middleware
@@ -133,7 +125,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Set session
       if (user) {
         const sessionId = await storage.createSession(user.id);
-        req.session.sessionId = sessionId;
+        (req.session as any).sessionId = sessionId;
       }
 
       // Redirect to front-end dashboard
@@ -146,7 +138,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.get("/api/auth/user", async (req, res) => {
     try {
-      const sessionId = req.session.sessionId;
+      const sessionId = (req.session as any).sessionId;
       
       if (!sessionId) {
         return res.status(401).json({ authenticated: false });
@@ -173,7 +165,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post("/api/auth/logout", async (req, res) => {
     try {
-      const sessionId = req.session.sessionId;
+      const sessionId = (req.session as any).sessionId;
       
       if (sessionId) {
         await storage.deleteSession(sessionId);
